@@ -1,5 +1,3 @@
-!pip install transformers
-
 import streamlit as st
 from transformers import pipeline
 
@@ -9,7 +7,7 @@ def classify_text(text):
     result = classifier(text)[0]
     return result["label"]
 
-st.text_input("Enter text here:", key="text")
+text_input = st.text_input("Enter text here:")
 if st.button("Classify"):
-    result = classify_text(st.session_state.text)
+    result = classify_text(text_input)
     st.write(result)
